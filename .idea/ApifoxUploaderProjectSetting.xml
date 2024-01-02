@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ApifoxUploaderProjectSetting">
+    <option name="apifoxAccessToken" value="APS-fGlVDcpor3URcMyoLgc2fxkpuofzU5kE" />
+    <option name="apifoxProjectIds">
+      <array>
+        <option value="# ModuleName:ProjectID" />
+        <option value="xuecheng-plus-content-api:3839041" />
+      </array>
+    </option>
+    <option name="apifoxSyncFolder" value="true" />
+    <option name="yapiTokens" value="" />
+  </component>
+</project>
