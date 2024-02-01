@@ -33,6 +33,15 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
             <version>3.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <!-- nacos配置文件 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
 
         <!-- Spring Boot 的 Spring Web MVC 集成 -->
         <dependency>

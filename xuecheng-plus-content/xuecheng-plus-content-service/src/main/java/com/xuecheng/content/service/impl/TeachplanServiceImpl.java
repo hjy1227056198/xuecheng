@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.xuecheng.base.execption.XueChengPlusException;
 import com.xuecheng.content.mapper.TeachplanMapper;
 import com.xuecheng.content.mapper.TeachplanMediaMapper;
+import com.xuecheng.content.model.dto.BindTeachplanMediaDto;
 import com.xuecheng.content.model.dto.SaveTeachplanDto;
 import com.xuecheng.content.model.dto.TeachplanDto;
 import com.xuecheng.content.model.po.Teachplan;
@@ -178,6 +179,58 @@ public class TeachplanServiceImpl implements TeachplanService {
         teachplanMapper.updateById(teachplan1);
 
 
+
+    }
+
+    /**
+     * 课程计划绑定媒资
+     * @param bindTeachplanMediaDto
+     * @return
+     */
+    @Override
+    @Transactional
+    public TeachplanMedia associationMedia(BindTeachplanMediaDto bindTeachplanMediaDto) {
+        //获取课程计划id
+        Long teachplanId = bindTeachplanMediaDto.getTeachplanId();
+         //根据课程计划id查询课程计划
+        Teachplan teachplan = teachplanMapper.selectById(teachplanId);
+        //获取课程id
+        Long courseId = teachplan.getCourseId();
+        //构成查询条件
+        LambdaQueryWrapper<TeachplanMedia> teachplanMediaLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        //根据课程计划id删除
+        teachplanMediaLambdaQueryWrapper.eq(TeachplanMedia::getTeachplanId,bindTeachplanMediaDto.getTeachplanId());
+        //先删除原本教学计划绑定的媒资信息
+        teachplanMediaMapper.delete(teachplanMediaLambdaQueryWrapper);
+        //构建封装类
+        TeachplanMedia teachplanMedia = new TeachplanMedia();
+        //数据拷贝
+        BeanUtils.copyProperties(bindTeachplanMediaDto,teachplanMedia);
+        //设置课程id
+        teachplanMedia.setCourseId(courseId);
+        teachplanMedia.setMediaFilename(bindTeachplanMediaDto.getFileName());
+        //设置创建时间
+        teachplanMedia.setCreateDate(LocalDateTime.now());
+        //插入课程计划绑定的媒资信息
+        teachplanMediaMapper.insert(teachplanMedia);
+
+
+
+        return teachplanMedia;
+    }
+    /**
+     * 删除课程计划和媒资信息绑定
+     * @param teachPlanId
+     * @param mediaId
+     */
+    @Override
+    @Transactional
+    public void deleteMedia(Long teachPlanId, String mediaId) {
+        LambdaQueryWrapper<TeachplanMedia> queryWrapper = new LambdaQueryWrapper<>();
+
+        queryWrapper.eq(TeachplanMedia::getMediaId,mediaId);
+
+        teachplanMediaMapper.delete(queryWrapper);
 
     }
 }

@@ -1,0 +1,1 @@
+2024-01-30 18:59:26,514 ERROR [http-nio-63050-exec-6][MediaFileServiceImpl.java:475] - 合并分块文件失败,bucket:video,objectName:a/4/a438145da54d80ce32294360670cef7f/a438145da54d80ce32294360670cef7f.mp4,错误信息：A timeout occurred while trying to lock a resource, please reduce your request rate

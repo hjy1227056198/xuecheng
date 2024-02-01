@@ -1,7 +1,9 @@
 package com.xuecheng.content.api;
 
+import com.xuecheng.content.model.dto.BindTeachplanMediaDto;
 import com.xuecheng.content.model.dto.SaveTeachplanDto;
 import com.xuecheng.content.model.dto.TeachplanDto;
+import com.xuecheng.content.model.po.TeachplanMedia;
 import com.xuecheng.content.service.TeachplanService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -75,4 +77,31 @@ public class TeachplanController {
     public void moveupTeachplan(@PathVariable Long id){
         teachplanService.moveupTeachplan(id);
     }
+
+    /**
+     * 课程计划和媒资信息绑定
+     * @param bindTeachplanMediaDto
+     */
+    @ApiOperation(value = "课程计划和媒资信息绑定")
+    @PostMapping("/teachplan/association/media")
+    public void associationMedia(@RequestBody BindTeachplanMediaDto bindTeachplanMediaDto){
+        teachplanService.associationMedia(bindTeachplanMediaDto);
+
+    }
+
+    /**
+     * TODO  这个接口还存在bug
+     * 删除课程计划和媒资信息绑定
+     * @param teachPlanId
+     * @param mediaId
+     */
+    @ApiOperation(value = "删除课程计划和媒资信息绑定")
+    @DeleteMapping(value = {"/teachplan/association/media/{teachPlanId}/{mediaId}","/teachplan/association/media/{mediaId}"})
+    public void deleteMedia(@PathVariable(value = "teachPlanId",required = false) Long teachPlanId,@PathVariable String mediaId){
+        if (teachPlanId==null){
+            teachplanService.deleteMedia(teachPlanId,mediaId);
+        }
+
+    }
+
 }

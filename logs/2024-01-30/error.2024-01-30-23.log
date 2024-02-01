@@ -1,0 +1,32 @@
+2024-01-30 23:45:19,343 ERROR [pool-2-thread-1][VideoTask.java:132] - 上传视频失败或入库失败,视频地址:video1/6/165eac7a40efcda15755ca793a5961ba/165eac7a40efcda15755ca793a5961ba.mp4,错误信息:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '2' for key 'media_process_history.PRIMARY'
+### The error may exist in com/xuecheng/media/mapper/MediaProcessHistoryMapper.java (best guess)
+### The error may involve com.xuecheng.media.mapper.MediaProcessHistoryMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO media_process_history  ( file_id, filename, bucket, file_path, status, create_date, finish_date, url,  fail_count )  VALUES  ( ?, ?, ?, ?, ?, ?, ?, ?,  ? )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '2' for key 'media_process_history.PRIMARY'
+; Duplicate entry '2' for key 'media_process_history.PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '2' for key 'media_process_history.PRIMARY'
+2024-01-30 23:45:32,255 ERROR [pool-3-thread-1][VideoTask.java:132] - 上传视频失败或入库失败,视频地址:video1/6/165eac7a40efcda15755ca793a5961ba/165eac7a40efcda15755ca793a5961ba.mp4,错误信息:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '3' for key 'media_process_history.PRIMARY'
+### The error may exist in com/xuecheng/media/mapper/MediaProcessHistoryMapper.java (best guess)
+### The error may involve com.xuecheng.media.mapper.MediaProcessHistoryMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO media_process_history  ( file_id, filename, bucket, file_path, status, create_date, finish_date, url, errormsg, fail_count )  VALUES  ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '3' for key 'media_process_history.PRIMARY'
+; Duplicate entry '3' for key 'media_process_history.PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '3' for key 'media_process_history.PRIMARY'
+2024-01-30 23:45:45,299 ERROR [pool-4-thread-1][VideoTask.java:132] - 上传视频失败或入库失败,视频地址:video1/6/165eac7a40efcda15755ca793a5961ba/165eac7a40efcda15755ca793a5961ba.mp4,错误信息:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4' for key 'media_process_history.PRIMARY'
+### The error may exist in com/xuecheng/media/mapper/MediaProcessHistoryMapper.java (best guess)
+### The error may involve com.xuecheng.media.mapper.MediaProcessHistoryMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO media_process_history  ( file_id, filename, bucket, file_path, status, create_date, finish_date, url, errormsg, fail_count )  VALUES  ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4' for key 'media_process_history.PRIMARY'
+; Duplicate entry '4' for key 'media_process_history.PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4' for key 'media_process_history.PRIMARY'
+2024-01-30 23:59:24,973 ERROR [pool-2-thread-1][VideoTask.java:132] - 上传视频失败或入库失败,视频地址:videoa/4/a438145da54d80ce32294360670cef7f/a438145da54d80ce32294360670cef7f.mp4,错误信息:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'media_process_history.PRIMARY'
+### The error may exist in com/xuecheng/media/mapper/MediaProcessHistoryMapper.java (best guess)
+### The error may involve com.xuecheng.media.mapper.MediaProcessHistoryMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO media_process_history  ( file_id, filename, bucket, file_path, status, create_date, finish_date, url,  fail_count )  VALUES  ( ?, ?, ?, ?, ?, ?, ?, ?,  ? )
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'media_process_history.PRIMARY'
+; Duplicate entry '5' for key 'media_process_history.PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'media_process_history.PRIMARY'

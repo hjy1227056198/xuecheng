@@ -24,7 +24,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-
+        <!-- nacos配置文件 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
         <!-- mybatis plus的依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>
