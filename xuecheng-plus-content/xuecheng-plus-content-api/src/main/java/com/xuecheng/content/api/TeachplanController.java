@@ -96,7 +96,7 @@ public class TeachplanController {
      * @param mediaId
      */
     @ApiOperation(value = "删除课程计划和媒资信息绑定")
-    @DeleteMapping(value = {"/teachplan/association/media/{teachPlanId}/{mediaId}","/teachplan/association/media/{mediaId}"})
+    @DeleteMapping("/teachplan/association/media/{teachPlanId}/{mediaId}")
     public void deleteMedia(@PathVariable(value = "teachPlanId",required = false) Long teachPlanId,@PathVariable String mediaId){
         if (teachPlanId==null){
             teachplanService.deleteMedia(teachPlanId,mediaId);

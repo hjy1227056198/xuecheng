@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/xuecheng-plus-system/xuecheng-plus-system/pom.xml" />
         <option value="$PROJECT_DIR$/xuecheng-plus-system/pom.xml" />
         <option value="$PROJECT_DIR$/xuecheng-plus-media/pom.xml" />
+        <option value="$PROJECT_DIR$/xuecheng-plus-message-sdk/pom.xml" />
+        <option value="$PROJECT_DIR$/xuecheng-plus-search/pom.xml" />
       </list>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />

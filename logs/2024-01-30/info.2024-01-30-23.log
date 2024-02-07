@@ -1,0 +1,34 @@
+2024-01-31 00:00:01,411 DEBUG [com.alibaba.nacos.client.naming.updater][NacosRestTemplate.java:476] - HTTP method: GET, url: http://192.168.101.65:8848/nacos/v1/ns/instance/list?app=unknown&healthyOnly=false&namespaceId=dev402&clientIP=192.168.101.1&serviceName=xuecheng-plus-project%40%40system-api&udpPort=58842&clusters=DEFAULT, body: {}
+2024-01-31 00:00:01,411 DEBUG [com.alibaba.nacos.client.naming.updater][NacosRestTemplate.java:476] - HTTP method: GET, url: http://192.168.101.65:8848/nacos/v1/ns/instance/list?app=unknown&healthyOnly=false&namespaceId=dev402&clientIP=192.168.101.1&serviceName=xuecheng-plus-project%40%40system-api&udpPort=58842&clusters=DEFAULT, body: {}
+2024-01-31 00:00:01,659 DEBUG [com.alibaba.nacos.client.naming.updater][NacosRestTemplate.java:476] - HTTP method: GET, url: http://192.168.101.65:8848/nacos/v1/ns/instance/list?app=unknown&healthyOnly=false&namespaceId=dev402&clientIP=192.168.101.1&serviceName=xuecheng-plus-project%40%40media-api&udpPort=60952&clusters=DEFAULT, body: {}
+2024-01-31 00:00:01,659 DEBUG [com.alibaba.nacos.client.naming.updater][NacosRestTemplate.java:476] - HTTP method: GET, url: http://192.168.101.65:8848/nacos/v1/ns/instance/list?app=unknown&healthyOnly=false&namespaceId=dev402&clientIP=192.168.101.1&serviceName=xuecheng-plus-project%40%40media-api&udpPort=60952&clusters=DEFAULT, body: {}
+2024-01-31 00:00:01,739 DEBUG [xxl-job, executor ExecutorRegistryThread][ExecutorRegistryThread.java:51] - >>>>>>>>>>> xxl-job registry success, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='media-process-service', registryValue='http://192.168.101.1:9999/'}, registryResult:ReturnT [code=200, msg=null, content=null]
+2024-01-31 00:00:01,739 DEBUG [xxl-job, executor ExecutorRegistryThread][ExecutorRegistryThread.java:51] - >>>>>>>>>>> xxl-job registry success, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='media-process-service', registryValue='http://192.168.101.1:9999/'}, registryResult:ReturnT [code=200, msg=null, content=null]
+2024-01-31 00:00:01,831 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - ==>  Preparing: select * from media_process t where t.id % ? = ? and (t.status = '1' or t.status = '3') and t.fail_count < 3 limit ?
+2024-01-31 00:00:01,831 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - ==>  Preparing: select * from media_process t where t.id % ? = ? and (t.status = '1' or t.status = '3') and t.fail_count < 3 limit ?
+2024-01-31 00:00:01,832 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - ==> Parameters: 1(Integer), 0(Integer), 8(Integer)
+2024-01-31 00:00:01,832 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - ==> Parameters: 1(Integer), 0(Integer), 8(Integer)
+2024-01-31 00:00:01,833 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - <==      Total: 0
+2024-01-31 00:00:01,833 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - <==      Total: 0
+2024-01-31 00:00:01,833 DEBUG [xxl-job, JobThread-4-1706630348084][VideoTask.java:55] - 取出待处理视频任务0条
+2024-01-31 00:00:01,833 DEBUG [xxl-job, JobThread-4-1706630348084][VideoTask.java:55] - 取出待处理视频任务0条
+2024-01-31 00:00:01,834 DEBUG [xxl-job, JobThread-4-1706630348084][TriggerCallbackThread.java:40] - >>>>>>>>>>> xxl-job, push callback request, logId:140299
+2024-01-31 00:00:01,834 DEBUG [xxl-job, JobThread-4-1706630348084][TriggerCallbackThread.java:40] - >>>>>>>>>>> xxl-job, push callback request, logId:140299
+2024-01-31 00:00:02,123 DEBUG [com.alibaba.nacos.naming.beat.sender][NamingProxy.java:421] - [BEAT] dev402 sending beat to server: BeatInfo{port=63110, ip='192.168.101.1', weight=1.0, serviceName='xuecheng-plus-project@@system-api', cluster='DEFAULT', metadata={preserved.register.source=SPRING_CLOUD}, scheduled=false, period=5000, stopped=false}
+2024-01-31 00:00:02,123 DEBUG [com.alibaba.nacos.naming.beat.sender][NamingProxy.java:421] - [BEAT] dev402 sending beat to server: BeatInfo{port=63110, ip='192.168.101.1', weight=1.0, serviceName='xuecheng-plus-project@@system-api', cluster='DEFAULT', metadata={preserved.register.source=SPRING_CLOUD}, scheduled=false, period=5000, stopped=false}
+2024-01-31 00:00:02,124 DEBUG [com.alibaba.nacos.naming.beat.sender][NacosRestTemplate.java:476] - HTTP method: PUT, url: http://192.168.101.65:8848/nacos/v1/ns/instance/beat?app=unknown&serviceName=xuecheng-plus-project%40%40system-api&namespaceId=dev402&port=63110&clusterName=DEFAULT&ip=192.168.101.1, body: {}
+2024-01-31 00:00:02,124 DEBUG [com.alibaba.nacos.naming.beat.sender][NacosRestTemplate.java:476] - HTTP method: PUT, url: http://192.168.101.65:8848/nacos/v1/ns/instance/beat?app=unknown&serviceName=xuecheng-plus-project%40%40system-api&namespaceId=dev402&port=63110&clusterName=DEFAULT&ip=192.168.101.1, body: {}
+2024-01-31 00:00:02,355 DEBUG [HikariPool-1 housekeeper][HikariPool.java:421] - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-01-31 00:00:02,355 DEBUG [HikariPool-1 housekeeper][HikariPool.java:421] - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-01-31 00:00:02,355 DEBUG [HikariPool-1 housekeeper][HikariPool.java:517] - HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2024-01-31 00:00:02,355 DEBUG [HikariPool-1 housekeeper][HikariPool.java:517] - HikariPool-1 - Fill pool skipped, pool is at sufficient level.
+2024-01-31 00:00:02,832 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - ==>  Preparing: select * from media_process t where t.id % ? = ? and (t.status = '1' or t.status = '3') and t.fail_count < 3 limit ?
+2024-01-31 00:00:02,832 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - ==>  Preparing: select * from media_process t where t.id % ? = ? and (t.status = '1' or t.status = '3') and t.fail_count < 3 limit ?
+2024-01-31 00:00:02,833 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - ==> Parameters: 1(Integer), 0(Integer), 8(Integer)
+2024-01-31 00:00:02,833 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - ==> Parameters: 1(Integer), 0(Integer), 8(Integer)
+2024-01-31 00:00:02,834 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - <==      Total: 0
+2024-01-31 00:00:02,834 DEBUG [xxl-job, JobThread-4-1706630348084][BaseJdbcLogger.java:137] - <==      Total: 0
+2024-01-31 00:00:02,834 DEBUG [xxl-job, JobThread-4-1706630348084][VideoTask.java:55] - 取出待处理视频任务0条
+2024-01-31 00:00:02,834 DEBUG [xxl-job, JobThread-4-1706630348084][VideoTask.java:55] - 取出待处理视频任务0条
+2024-01-31 00:00:02,836 DEBUG [xxl-job, JobThread-4-1706630348084][TriggerCallbackThread.java:40] - >>>>>>>>>>> xxl-job, push callback request, logId:140301
+2024-01-31 00:00:02,836 DEBUG [xxl-job, JobThread-4-1706630348084][TriggerCallbackThread.java:40] - >>>>>>>>>>> xxl-job, push callback request, logId:140301

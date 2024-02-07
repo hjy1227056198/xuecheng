@@ -12,7 +12,7 @@ import java.util.List;
 public interface CourseTeacherService {
     /**
      * 查询课程教师
-     * @param id 教师id
+     * @param id 课程id
      * @return
      */
 

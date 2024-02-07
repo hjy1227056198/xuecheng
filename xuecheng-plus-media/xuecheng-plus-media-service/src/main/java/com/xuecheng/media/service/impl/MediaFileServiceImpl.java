@@ -150,6 +150,8 @@ public class MediaFileServiceImpl implements MediaFileService {
   return false;
  }
 
+
+
  /**
   * @param companyId           机构id
   * @param fileMd5             文件md5值
@@ -232,7 +234,7 @@ public class MediaFileServiceImpl implements MediaFileService {
   * @return 文件信息
   */
  @Override
- public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath) {
+ public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath,String objectName) {
 
   //文件名
   String filename = uploadFileParamsDto.getFilename();
@@ -244,12 +246,17 @@ public class MediaFileServiceImpl implements MediaFileService {
   String defaultFolderPath = getDefaultFolderPath();
   //文件md5
   String fileMd5 = getFileMd5(new File(localFilePath));
+
+
+  if (StringUtils.isEmpty(objectName)){
+   objectName= defaultFolderPath + fileMd5 + extension;
+  }
   //最终存储在minIO的文件名
-  String s = defaultFolderPath + fileMd5 + extension;
+
   //上传文件到minIO
-  addMediaFilesToMinIO(localFilePath, mimeType, bucket_Files, s);
+  addMediaFilesToMinIO(localFilePath, mimeType, bucket_Files, objectName);
   //将文件信息添加到文件表
-  MediaFiles mediaFiles = mediaFileService.addMediaFilesToDb(companyId, fileMd5, uploadFileParamsDto, bucket_Files, s);
+  MediaFiles mediaFiles = mediaFileService.addMediaFilesToDb(companyId, fileMd5, uploadFileParamsDto, bucket_Files, objectName);
   //构造封装类
   UploadFileResultDto uploadFileResultDto = new UploadFileResultDto();
   //拷贝基本信息
@@ -507,7 +514,16 @@ public class MediaFileServiceImpl implements MediaFileService {
   return RestResponse.success(true);
  }
 
-
+ /**
+  * 根据媒资id获取媒资信息
+  * @param mediaId
+  * @return
+  */
+ @Override
+ public MediaFiles getFileById(String mediaId) {
+  MediaFiles mediaFiles = mediaFilesMapper.selectById(mediaId);
+  return mediaFiles;
+ }
 
 
 
