@@ -9,6 +9,7 @@ import com.xuecheng.content.model.dto.EditCourseDto;
 import com.xuecheng.content.model.dto.QueryCourseParamsDto;
 import com.xuecheng.content.model.po.CourseBase;
 import com.xuecheng.content.service.CourseBaseInfoService;
+import com.xuecheng.content.util.SecurityUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,9 @@ public class CourseBaseInfoController {
     @ApiOperation("新增课程")
     @PostMapping("/course")
     public CourseBaseInfoDto createCourseBase(@RequestBody @Validated(ValidationGroups.Inster.class) AddCourseDto addCourseDto){
-        //TODO 用户数据库还未开发，先暂时用假数据
-        Long companyId = 1232141425L;
-        CourseBaseInfoDto courseBase = courseBaseInfoService.createCourseBase(companyId, addCourseDto);
+        SecurityUtil.XcUser user = SecurityUtil.getUser();
+        String companyId = user.getCompanyId();
+        CourseBaseInfoDto courseBase = courseBaseInfoService.createCourseBase(Long.valueOf(companyId), addCourseDto);
         return courseBase;
     }
 
