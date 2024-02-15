@@ -2,14 +2,19 @@ package com.xuecheng.ucenter.service.impl;
 
 import com.alibaba.cloud.commons.lang.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.xuecheng.base.execption.XueChengPlusException;
 import com.xuecheng.ucenter.feignclient.CheckCodeClient;
 import com.xuecheng.ucenter.mapper.XcUserMapper;
 import com.xuecheng.ucenter.model.dto.AuthParamsDto;
 import com.xuecheng.ucenter.model.dto.XcUserExt;
+import com.xuecheng.ucenter.model.dto.XcUserPasswordDto;
 import com.xuecheng.ucenter.model.po.XcUser;
 import com.xuecheng.ucenter.service.AuthService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +29,10 @@ public class PasswordAuthServiceImpl implements AuthService {
     PasswordEncoder passwordEncoder;
     @Autowired
     CheckCodeClient checkCodeClient;
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+
     @Override
     public XcUserExt execute(AuthParamsDto authParamsDto) {
 
@@ -59,5 +68,7 @@ public class PasswordAuthServiceImpl implements AuthService {
         }
         return xcUserExt;
     }
+
+
 }
 

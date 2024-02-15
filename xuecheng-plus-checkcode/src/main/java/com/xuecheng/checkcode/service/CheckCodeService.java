@@ -88,4 +88,11 @@ public interface CheckCodeService {
 
         void remove(String key);
     }
+
+    /**
+     * 邮箱or手机 验证码接口
+     * @param param1
+     * @return
+     */
+    String phoneverify(String param1,int size);
 }

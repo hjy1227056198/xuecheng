@@ -24,6 +24,7 @@ import java.util.Map;
 @RestController
 public class CheckCodeController {
 
+
     @Resource(name = "PicCheckCodeService")
     private CheckCodeService picCheckCodeService;
 
@@ -45,4 +46,17 @@ public class CheckCodeController {
         Boolean isSuccess = picCheckCodeService.verify(key,code);
         return isSuccess;
     }
+
+    /**
+     * 邮箱or手机 验证码发送接口
+     * @param param1
+     * @return
+     */
+    @PostMapping(value = "/phone")
+    @ApiOperation("邮箱or手机 验证码发送接口")
+    public String  phoneverify(@RequestParam("param1") String param1){
+        String phoneverify = picCheckCodeService.phoneverify(param1, 5);
+        return phoneverify;
+    }
+
 }

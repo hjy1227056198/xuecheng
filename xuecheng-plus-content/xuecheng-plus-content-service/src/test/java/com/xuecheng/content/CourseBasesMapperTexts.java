@@ -50,7 +50,7 @@ public class CourseBasesMapperTexts {
         pageParams.setPageNo(1L);//页码
         pageParams.setPageSize(3L);//每页记录数
 
-        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(pageParams, queryCourseParamsDto);
+        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(null,pageParams, queryCourseParamsDto);
         List<CourseBase> items = courseBasePageResult.getItems();
         System.out.println(items);
     }

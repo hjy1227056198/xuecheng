@@ -3,8 +3,10 @@ package com.xuecheng.content.api;
 import com.xuecheng.content.model.dto.SaveCourseTeacherDto;
 import com.xuecheng.content.model.po.CourseTeacher;
 import com.xuecheng.content.service.CourseTeacherService;
+import com.xuecheng.content.util.SecurityUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,8 +44,13 @@ public class CourseTeacherController {
     @ApiOperation("添加教师")
     @PostMapping("/courseTeacher")
     public CourseTeacher saveTeacher(@RequestBody SaveCourseTeacherDto courseTeacher){
-        Long company_id=1232141425L;
-            return courseTeacherService.saveTeacher(company_id,courseTeacher);
+        SecurityUtil.XcUser user = SecurityUtil.getUser();
+
+        Long companyId = null;
+        if (StringUtils.isNotEmpty(user.getCompanyId())){
+            companyId=Long.parseLong(user.getCompanyId());
+        }
+            return courseTeacherService.saveTeacher(companyId,courseTeacher);
     }
 
 
@@ -56,8 +63,13 @@ public class CourseTeacherController {
     @ApiOperation("删除课程教师")
     @DeleteMapping("/courseTeacher/course/{courseId}/{id}")
     public void deleteCourseTeacher(@PathVariable Long courseId,@PathVariable Long id){
-        Long company_id=1232141425L;
-            courseTeacherService.deleteCourseTeacher(company_id,courseId,id);
+        SecurityUtil.XcUser user = SecurityUtil.getUser();
+
+        Long companyId = null;
+        if (StringUtils.isNotEmpty(user.getCompanyId())){
+            companyId=Long.parseLong(user.getCompanyId());
+        }
+            courseTeacherService.deleteCourseTeacher(companyId,courseId,id);
     }
 
 }

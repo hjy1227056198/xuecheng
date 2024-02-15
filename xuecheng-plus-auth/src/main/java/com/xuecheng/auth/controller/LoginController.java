@@ -1,12 +1,17 @@
 package com.xuecheng.auth.controller;
 
 import com.xuecheng.ucenter.mapper.XcUserMapper;
+import com.xuecheng.ucenter.model.dto.XcUserPasswordDto;
+import com.xuecheng.ucenter.model.dto.XcUserregisterDto;
 import com.xuecheng.ucenter.model.po.XcUser;
+import com.xuecheng.ucenter.service.AuthService;
+import com.xuecheng.ucenter.service.AuthUserService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * @author Mr.M
@@ -21,7 +26,8 @@ public class LoginController {
     @Autowired
     XcUserMapper userMapper;
 
-
+    @Autowired
+    private AuthUserService authUserService;
     @RequestMapping("/login-success")
     public String loginSuccess() {
 
@@ -45,6 +51,25 @@ public class LoginController {
         return "访问r2资源";
     }
 
+    /**
+     * 找回密码
+     * @param xcUser
+     */
+    @ApiOperation("找回密码")
+    @PostMapping("/findpassword")
+    public void findpassword(@RequestBody XcUserPasswordDto xcUser){
+        authUserService.findpassword(xcUser);
+    }
+
+    /**
+     * 注册账号接口
+     * @param xcUserregisterDto
+     */
+    @PostMapping("/register")
+    @ApiOperation("注册接口")
+    public void register(@RequestBody XcUserregisterDto xcUserregisterDto){
+        authUserService.register(xcUserregisterDto);
 
 
+    }
 }
