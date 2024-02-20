@@ -2,11 +2,13 @@ package com.xuecheng.content.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.xuecheng.base.execption.XueChengPlusException;
+import com.xuecheng.content.mapper.CourseMarketMapper;
 import com.xuecheng.content.mapper.TeachplanMapper;
 import com.xuecheng.content.mapper.TeachplanMediaMapper;
 import com.xuecheng.content.model.dto.BindTeachplanMediaDto;
 import com.xuecheng.content.model.dto.SaveTeachplanDto;
 import com.xuecheng.content.model.dto.TeachplanDto;
+import com.xuecheng.content.model.po.CourseMarket;
 import com.xuecheng.content.model.po.Teachplan;
 import com.xuecheng.content.model.po.TeachplanMedia;
 import com.xuecheng.content.service.TeachplanService;
@@ -28,6 +30,8 @@ public class TeachplanServiceImpl implements TeachplanService {
     private TeachplanMapper teachplanMapper;
     @Autowired
     private TeachplanMediaMapper teachplanMediaMapper;
+    @Autowired
+    private CourseMarketMapper courseMarketMapper;
 
     /**
      * 课程计划树形结构查询
@@ -50,7 +54,8 @@ public class TeachplanServiceImpl implements TeachplanService {
             //新建课程
             //取出同父同级别的课程计划数
             LambdaQueryWrapper<Teachplan> teachplanLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            teachplanLambdaQueryWrapper.eq(StringUtils.isNotEmpty(String.valueOf(teachplanDto.getParentid())),Teachplan::getParentid,teachplanDto.getParentid())
+            teachplanLambdaQueryWrapper
+                    .eq(StringUtils.isNotEmpty(String.valueOf(teachplanDto.getParentid())),Teachplan::getParentid,teachplanDto.getParentid())
                     .eq(StringUtils.isNotEmpty(String.valueOf(teachplanDto.getCourseId())),Teachplan::getCourseId,teachplanDto.getCourseId());
             Integer i = teachplanMapper.selectCount(teachplanLambdaQueryWrapper);
             Teachplan teachplan = new Teachplan();
@@ -59,12 +64,24 @@ public class TeachplanServiceImpl implements TeachplanService {
             teachplan.setOrderby(i+1);
             teachplan.setCreateDate(LocalDateTime.now());
             teachplanMapper.insert(teachplan);
+            CourseMarket courseMarket = courseMarketMapper.selectById(teachplanDto.getCourseId());
+            //查询课程收费状态，更新关键字段
+            if (courseMarket.getCharge().equals("201000")){
+                teachplan.setIsPreview("1");
+                teachplanMapper.updateById(teachplan);
+            }
+
 
         }else {
             //修改课程
             Teachplan teachplan = teachplanMapper.selectById(id);
             BeanUtils.copyProperties(teachplanDto,teachplan);
             teachplan.setChangeDate(LocalDateTime.now());
+            //查询课程收费状态，更新关键字段
+            CourseMarket courseMarket = courseMarketMapper.selectById(teachplan.getCourseId());
+            if (courseMarket.getCharge().equals("201000")){
+                teachplan.setIsPreview("1");
+            }
             teachplanMapper.updateById(teachplan);
 
         }

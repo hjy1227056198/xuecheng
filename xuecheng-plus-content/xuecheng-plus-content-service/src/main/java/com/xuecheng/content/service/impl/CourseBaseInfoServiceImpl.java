@@ -110,6 +110,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         }
         //新增对象
         CourseBase courseBase = new CourseBase();
+
         //对象拷贝
         BeanUtils.copyProperties(dto,courseBase);
         //设置审核默认状态

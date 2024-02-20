@@ -24,7 +24,7 @@
     <div class="banner-bg"></div>
     <div class="banner-info">
         <div class="banner-left">
-            <p>${model.courseBase.mtName!''}<span>\ ${model.courseBase.stName!''}</span></p>
+            <p>${model.courseBase.mtName}<span>\ ${model.courseBase.stName}</span></p>
             <p class="tit">${model.courseBase.name}</p>
             <p class="pic">
                 <#if model.courseBase.charge=='201000'>
@@ -618,13 +618,13 @@
                 <img :src="qrcode" width="200" height="200" alt="请点击支付宝支付按钮，并完成扫码支付。"/>
 
                 <div class="info">
-                    <p class="info-tit">${model.courseBase.name}<span>课程有效期:${(model.courseBase.validDays)!''}天</span></p>
-                    <p class="info-pic">课程价格 : <span>￥${model.courseBase.originalPrice!''}元</span></p>
-                    <p class="info-new-pic">优惠价格 : <span>￥${model.courseBase.price!''}元</span></p>
+                    <p class="info-tit">${model.courseBase.name}<span>课程有效期:${model.courseBase.validDays}天</span></p>
+                    <p class="info-pic">课程价格 : <span>￥${(model.courseBase.originalPrice)!''}元</span></p>
+                    <p class="info-new-pic">优惠价格 : <span>￥${(model.courseBase.price)!''}元</span></p>
                 </div>
             </div>
             <div class="fact-pic">实际支付: <span>￥${model.courseBase.price!''}元</span></div>
-            <div class="go-pay"><a href="#" @click.prevent="wxPay()">微信支付</a><a href="#" @click.prevent="aliPay()">支付宝支付</a><a href="#" @click.prevent="startLearngin()">试学</a></div>
+            <div class="go-pay"><a href="#" @click.prevent="wxPay()">微信支付</a><a href="#" @click.prevent="aliPay()">支付宝支付</a><a href="#" @click.prevent="querypayresult()">支付完成</a><a href="#" @click.prevent="startLearngin()">试学</a></div>
         </div>
         <!--支付弹窗- end -->
         <div class="popup-comment-box">

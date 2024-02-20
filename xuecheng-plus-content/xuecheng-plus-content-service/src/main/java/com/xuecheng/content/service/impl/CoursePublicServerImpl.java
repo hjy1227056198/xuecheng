@@ -65,6 +65,8 @@ public class CoursePublicServerImpl implements CoursePublishService {
     private MqMessageService mqMessageService;
     @Autowired
     private MediaServerClient mediaServerClient;
+    @Autowired
+    private CourseMarketMapper courseMarketMapper;
 
 
 
@@ -146,7 +148,7 @@ public class CoursePublicServerImpl implements CoursePublishService {
         //课程计划信息
         String teachplanString = JSON.toJSONString(teachplanTree);
         //设置课程计划信息
-        coursePublishPre.setTeachers(teachplanString);
+        coursePublishPre.setTeachplan(teachplanString);
         //设置提交课程时间
         coursePublishPre.setCreateDate(LocalDateTime.now());
         //设置课程审核状态已提交
@@ -296,4 +298,17 @@ public class CoursePublicServerImpl implements CoursePublishService {
             XueChengPlusException.cast("上传静态文件异常");
         }
     }
+
+    /**
+     * 查询课程发布信息
+     * @param courseId
+     * @return
+     */
+    @Override
+    public CoursePublish getCoursePublish(Long courseId) {
+        CoursePublish coursePublish = coursePublishMapper.selectById(courseId);
+        return coursePublish ;
+    }
+
+
 }
